@@ -27,3 +27,22 @@ function findLongestWord(str) {
 	}
   return longestWord;
 }
+
+//freecodecamp's convert strings of words into title format, 
+//which is the first letter of each word is capitalized and the rest are lowercase
+function titleCase(str) {
+	var strArray = str.split(' ');				//spilt the str up by ' '
+	var tempStr = "";
+	var finalStr = "";
+	//for loop to run through each element in strArray and alter them, adding them to finalStr
+	for (i = 0; i < strArray.length; i++) {
+		tempStr = strArray[i].toLowerCase();		//convert whole string to lowerCase
+		if (i === 0) {								//the first word does not need a space in front of it
+			//making the first character uppercase and adding in all character, except the first one
+			finalStr = finalStr + tempStr.charAt(0).toUpperCase() + tempStr.slice(1);
+		} else {
+		finalStr = finalStr + " " + tempStr.charAt(0).toUpperCase() + tempStr.slice(1);
+		}
+	}
+  return finalStr;
+}
