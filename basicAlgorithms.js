@@ -58,3 +58,16 @@ function largestOfFour(arr) {
 }
 //test data for largestOfFour()
 largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+//freecodecamp checking to see if a strig ends with the string passed in as target
+function confirmEnding(str, target) {
+  // "Never give up and good luck will find you."
+  // -- Falcor
+  if (str.substr(-target.length) == target) {
+  	return true;
+  } else {
+  	return false;
+  }
+}
+//test example for confirmEnding()
+confirmEnding("Bastian", "ian");
