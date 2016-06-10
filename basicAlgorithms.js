@@ -98,3 +98,28 @@ function truncateString(str, num) {
 }
 //test data for truncateString
 truncateString("A-tisket a-tasket A green and yellow basket", 11);
+
+//freecodecamp function to break up array elements into smaller arrays, then return a 2-d array
+function chunkArrayInGroups(arr, size) {
+  // Break it up.
+  var chunkArr = [];				//setting up new, empty array to push() into
+  var x = 0;					//the x counter is used for start position in array
+  var y = size;					//the y counter is used for the end position in array
+  while (x < arr.length) {			//looping while start position less than array length
+  	chunkArr.push(arr.slice(x, y));		//slicing and pushing into new array
+  	x += size;				//increment based on size
+  	y += size;
+  }
+  return chunkArr;
+}
+//test data for chunkArrayInGroups
+chunkArrayInGroups([0, 1, 2, 3, 4, 5], 3);
+
+//freecode camp function to slash off so many items form and array and return a new array of the remaining array elements
+function slasher(arr, howMany) {
+  // it doesn't always pay to be first
+  var slashArr = arr.splice(0, howMany);
+  return arr;
+}
+//test data fro slasher()
+slasher([1, 2, 3], 9);
