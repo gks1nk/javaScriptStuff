@@ -83,3 +83,18 @@ function repeatStringNumTimes(str, num) {
 }
 //test data for repeatStringNumTimes
 repeatStringNumTimes("abc", 3);
+
+//freecodecamp truncating string function
+function truncateString(str, num) {
+  // Clear out that junk in your trunk
+  var sliceNum = num;					//establish variable to alter num
+  if (num <= 3) {					//we want up to three characters to show at all times, this adds a buffer
+  	sliceNum += 3;
+  } else if (num >= str.length) {			//if num equals or exceeds the length of the str, we return the string
+  	return str;
+  }
+  var truncStr = str.slice(0, sliceNum - 3) + "...";	//slicing based on sliceNum - 3, to make room for the "..."
+  return truncStr;
+}
+//test data for truncateString
+truncateString("A-tisket a-tasket A green and yellow basket", 11);
