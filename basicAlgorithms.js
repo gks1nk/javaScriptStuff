@@ -1,11 +1,11 @@
 //freecodecamp's check for palindrome function
 function palindrome(str) {
   // Good luck!
-  var isPalindrome = true;								          //will only change to false when mismatch occurs
-  var lowerStr = str.toLowerCase();					      	//convert all letters to lower case
-  var alphaNumStr = lowerStr.match(/[a-z0-9]/gi);		//will strip out any characters other than alphanumeric
+  var isPalindrome = true;						//will only change to false when mismatch occurs
+  var lowerStr = str.toLowerCase();					//convert all letters to lower case
+  var alphaNumStr = lowerStr.match(/[a-z0-9]/gi);			//will strip out any characters other than alphanumeric
   var forAlphaNum = alphaNumStr.slice(0);			    	//copy array, so I can reverse the original one
-  alphaNumStr.reverse();							            	//reversing the initial array to test against the forAlphaNum copy
+  alphaNumStr.reverse();						//reversing the initial array to test against the forAlphaNum copy
   //for loop to check for palindrome, each array element should match when comparing alphaNumStr and forAlphaNum
   for (var i = 0; i < alphaNumStr.length; i++) {
   	if (alphaNumStr[i] != forAlphaNum[i]) {
@@ -46,3 +46,15 @@ function titleCase(str) {
 	}
   return finalStr;
 }
+
+//freecodecamp's function to return an array of the largest number in each sub array of an array of arrays
+function largestOfFour(arr) {
+  // You can do this!
+	var largestOfArrays = [];
+	for (i = 0; i < arr.length; i++) {
+		largestOfArrays.push(Math.max.apply(null, arr[i]));
+	}
+  return largestOfArrays;
+}
+//test data for largestOfFour()
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
