@@ -71,3 +71,15 @@ function confirmEnding(str, target) {
 }
 //test example for confirmEnding()
 confirmEnding("Bastian", "ian");
+
+//freecodecamp repeating a string a number of times and returning a new string
+function repeatStringNumTimes(str, num) {
+  // repeat after me
+  if (num > 0) {
+  	return (new Array(num + 1)).join(str);
+  } else {
+  	return "";
+  }
+}
+//test data for repeatStringNumTimes
+repeatStringNumTimes("abc", 3);
