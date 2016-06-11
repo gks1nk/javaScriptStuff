@@ -123,3 +123,23 @@ function slasher(arr, howMany) {
 }
 //test data fro slasher()
 slasher([1, 2, 3], 9);
+
+//freecodecamp function for mutations, it compares two strings, checking to see if all the letters of the second str are present in
+//the first string, returns true or false based on the testing
+function mutation(arr) {
+	//convert the strings to lowercase for testing
+	var testStr = arr[0].toLowerCase();
+	var testVal = arr[1].toLowerCase();
+	var result = 0;
+	//for loop using indexOf to make the check, and charAt to get at the individual characters in testVal
+	for (var i = 0; i < testVal.length; i++) {
+		result = testStr.indexOf(testVal.charAt(i));
+		if (result == -1) {
+			return false;
+		}
+	}
+  return true;
+}
+//test data for mutation function
+mutation(["voodoo", "do"]) ;
+
