@@ -192,13 +192,14 @@ function destroyer(arr) {
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 
 //-----------------------------------------------------------------
+//freecodecamp function to return the index value, where a number can be inserted into a sorted array, while keeping the 
+//array in ascended sorted order
 function getIndexToIns(arr, num) {
   // Find my place in this sorted array.
-  var sortedArr = arr.sort(function(a, b) {return a - b;});
- 
+  var sortedArr = arr.sort(function(a, b) {return a - b;});			//simple sort via a - b for ascending
   var i = 0;
-  while (num > sortedArr[i]) {
-  	i++
+  while (num > sortedArr[i]) {							//loop until we find a value greater than target
+  	i++									//this represents the index in the array to insert the number
   }
   return i;
 }
