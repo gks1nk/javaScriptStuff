@@ -204,3 +204,25 @@ function getIndexToIns(arr, num) {
 }
 
 getIndexToIns([5, 3, 20, 3], 5);
+
+//---------------------------------------------------------------------
+//freecodecamp simple ceasar's cipher function. all capital letters are shifted backwards 13 places
+function rot13(str) { // LBH QVQ VG!
+  var chk = 0;										//creating a variable to hold the unicode #
+  var decodedStr = "";
+  for (var i = 0; i < str.length; i++) {						//looping through the whole string
+  	chk = str.charCodeAt(i);							//convert char to unicode number
+  	if (chk >= 65 && chk <= 90) {							//check to make sure value is A-Z
+  		if (chk + 13 > 90) {							//check to see if the shift goes past the Z
+  			decodedStr += String.fromCharCode(65 + (chk + 13 - 91));	//wrap around to front of alphabet
+  		} else {
+  			decodedStr += String.fromCharCode(chk + 13);			//straight up shift
+  		}
+  	} else {
+  		decodedStr += String.fromCharCode(chk);					//any other character is left the same, like spaces or punctuation
+  	}
+  }
+  return decodedStr;
+}
+//test data for rot13
+rot13("SERR CVMMN!");
