@@ -143,3 +143,52 @@ function mutation(arr) {
 //test data for mutation function
 mutation(["voodoo", "do"]) ;
 
+//-----------------------------------------------------------------------------------
+//freecodecamp bouncer function, i am to take an array and drop any 'falsy' values:
+//false, "", null, undefined, 0, and NaN
+//isFalsy function written to work with the .filter() method
+function isFalsy(val) {
+	if (typeof val === 'string') {			//testing for strings
+		if (val === "") {			//if the string equals "", return false
+			return false;			//all other strings are kept
+		} else {
+			return true;
+		}
+	}
+	if (isNaN(val)) {				//since strings will test true in isNaN()
+		return false;				//I run that test after testing for "" and other strings
+	} else {					
+		switch (val) {				//switch to test the remaining falsy cases
+			case false:			//false, null, 0, undefined all return false
+			case null:			//anything left at this point return true
+			case 0:
+			case undefined:
+				return false;
+			default:
+				return true;
+		}
+	}
+}
+function bouncer(arr) {
+  // Don't show a false ID to this bouncer.
+  var filteredArr = arr.filter(isFalsy);		//creating the filtered array using my isFalsy() function
+  return filteredArr;
+}
+
+//test data for bouncer
+bouncer([7, "ate", "", false, 9]) ;
+
+//--------------------------------------------------------------------
+//freecodecamp search and destroy function, taking an array with the first element a sub array, and filtering out 
+//anything in the sub array that matches the other elements in the main array
+function destroyer(arr) {
+	var args = Array.prototype.slice.call(arguments); 	//converts the array into something normal to be worked with
+  	args.splice(0, 1);					//splicing off the sub array, first element
+  	return arr.filter(function(element) {			//running a filter with a function that tests the first sub array
+    	return args.indexOf(element) === -1;			//against the additional elements in the original array
+  	});
+}
+//test data for destroyer
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+//-----------------------------------------------------------------
