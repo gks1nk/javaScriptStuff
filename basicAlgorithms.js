@@ -192,3 +192,15 @@ function destroyer(arr) {
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 
 //-----------------------------------------------------------------
+function getIndexToIns(arr, num) {
+  // Find my place in this sorted array.
+  var sortedArr = arr.sort(function(a, b) {return a - b;});
+ 
+  var i = 0;
+  while (num > sortedArr[i]) {
+  	i++
+  }
+  return i;
+}
+
+getIndexToIns([5, 3, 20, 3], 5);
