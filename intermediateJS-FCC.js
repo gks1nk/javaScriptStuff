@@ -30,3 +30,20 @@ function diffArray(arr1, arr2) {
 }
 
 console.log(diffArray([1, "calf", 3, "piglet"], [1, "calf", 3, 4]));
+
+//Convert To Roman Numeral
+function convertToRoman(num) {
+    var roman = "";
+    var decimalNums = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    var romanNums = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+    for (var i = 0; i < decimalNums.length; i++) {
+        while (num >= decimalNums[i]) {
+            roman += romanNums[i];
+            num -= decimalNums[i];
+        }
+    }
+    return roman;
+}
+  
+  console.log(convertToRoman(798));
+
