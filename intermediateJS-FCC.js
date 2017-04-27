@@ -47,3 +47,32 @@ function convertToRoman(num) {
   
   console.log(convertToRoman(798));
 
+//wherefor art thou
+function whatIsInAName(collection, source) {
+  // What's in a name?
+  var arr = [];
+  // Only change code below this line
+  var sourceKeys = Object.keys(source);
+  
+  //console.log(sourceKeys);
+  for (var x = 0; x < collection.length; x++) {
+    var pushFlag = true;
+    for (var y = 0; y < sourceKeys.length; y++) {
+      if (collection[x].hasOwnProperty(sourceKeys[y])) {
+        if (collection[x][sourceKeys[y]] != source[sourceKeys[y]]) {
+          pushFlag = false;
+        }
+      } else {
+        pushFlag = false;
+      }
+    }
+    if (pushFlag) {
+      arr.push(collection[x]);
+    }
+  } 
+  // Only change code above this line
+  return arr;
+}
+
+console.log(whatIsInAName([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "c": 2 }));
+
