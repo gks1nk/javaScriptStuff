@@ -88,3 +88,23 @@ function myReplace(str, before, after) {
 }
 
 myReplace("Let us get back to more Coding", "Coding", "algorithms");
+
+//Pig Latin
+function translatePigLatin(str) {
+  var vowels = ["a", "e", "i", "o", "u"];
+  var indexOf = -1;
+  var indexCount = 0;
+  var pigStr = "";
+  while (indexOf == -1 && indexCount < str.length) {
+    indexOf = vowels.indexOf(str[indexCount]);
+    indexCount++;
+  }
+  if (indexCount == 1) {
+    pigStr = str + "way";
+  } else {
+    pigStr = str.substr(indexCount - 1) + str.substr(0, indexCount - 1) + "ay";
+  }
+  return pigStr;
+}
+
+console.log(translatePigLatin("program"));
