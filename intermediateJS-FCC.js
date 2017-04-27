@@ -76,3 +76,15 @@ function whatIsInAName(collection, source) {
 
 console.log(whatIsInAName([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "c": 2 }));
 
+//Search and Replace
+function myReplace(str, before, after) {
+  if (before[0] === before[0].toUpperCase()) {
+    var upper = after[0].toUpperCase() + after.slice(1);
+    after = upper;
+  }
+  var newstr = str.replace(before, after);
+  console.log(newstr);
+  return newstr;
+}
+
+myReplace("Let us get back to more Coding", "Coding", "algorithms");
