@@ -108,3 +108,21 @@ function translatePigLatin(str) {
 }
 
 console.log(translatePigLatin("program"));
+
+//DNA Pairing
+function pairElement(str) {
+  var pairedElements = {A: "T", T: "A", C: "G", G: "C"};
+  var splitElements = str.split("");
+  var finalElements = [];
+  for (var x = 0; x < splitElements.length; x++) {
+    var workingPair = [];
+    workingPair.push(splitElements[x]);
+    workingPair.push(pairedElements[splitElements[x]]);
+    finalElements.push(workingPair);
+  }
+  return finalElements;
+}
+
+console.log(pairElement("CTCTA"));
+
+//
