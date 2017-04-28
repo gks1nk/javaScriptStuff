@@ -125,4 +125,15 @@ function pairElement(str) {
 
 console.log(pairElement("CTCTA"));
 
-//
+//Missing Letters
+function fearNotLetter(str) {
+  var missingLetter;
+  for (var x = 0; x < str.length - 1; x++) {
+    if (str.charCodeAt(x) + 1 != str.charCodeAt(x + 1)) {
+      missingLetter = String.fromCharCode(str.charCodeAt(x) + 1);
+    }
+  }
+  return missingLetter;
+}
+
+console.log(fearNotLetter("abcdefghjklmno"));
