@@ -150,4 +150,16 @@ function booWho(bool) {
 
 console.log(booWho([1, 2, 3]));
 
-//
+//Sorted Union
+function uniteUnique(arr) {
+  var array = [];
+  for (var x = 0; x < arguments.length; x++) {
+    array.push(arguments[x]);
+  }
+  var flat = array.reduce((a, b) => a.concat(b), []);
+  var flatUniq = flat.filter(function(item, pos) {
+    return flat.indexOf(item) == pos; });
+  return flatUniq;
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
