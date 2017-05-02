@@ -177,4 +177,28 @@ function convertHTML(str) {
 
 convertHTML("Hamburgers < Pizza < Tacos");
 
+//spinal tap case
+function spinalCase(str) {
+  // "It's such a fine line between stupid, and clever."
+  // --David St. Hubbins
+  var str2 = str.split(/\s|_|(?=[A-Z])/g).join("-");
+  function replacer(match) {
+      return match.toLowerCase();
+  }
+  var newStr = str2.replace(/[A-Z]/g, replacer);
+  return newStr;
+}
+
+console.log(spinalCase('AllThe-small Things'));
+
+//spinal tap case v2
+function spinalCase(str) {
+  // "It's such a fine line between stupid, and clever."
+  // --David St. Hubbins
+  var newStr = str.split(/\s|_|(?=[A-Z])/g).join("-").toLowerCase();
+  return newStr;
+}
+
+console.log(spinalCase('AllThe-small Things'));
+
 //
