@@ -163,3 +163,18 @@ function uniteUnique(arr) {
 }
 
 uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+//Convert HTML Entities
+function convertHTML(str) {
+  // &colon;&rpar;
+  function replacer(match) {
+    var entities = {"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&apos;"}
+    return entities[match];
+  }
+  var newStr = str.replace(/[&<>"']/g, replacer);
+  return newStr;
+}
+
+convertHTML("Hamburgers < Pizza < Tacos");
+
+//
