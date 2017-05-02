@@ -201,4 +201,20 @@ function spinalCase(str) {
 
 console.log(spinalCase('AllThe-small Things'));
 
-//
+//Sum Odd Fibonacci Numbers
+function sumFibs(num) {
+  var fibOdds = 0;
+  var a = 0, b = 1, f = 1;
+  while (f <= num) {
+      if (f % 2 > 0) {
+        fibOdds += f;
+      }
+      f = a + b;
+      a = b;
+      b = f;
+      
+    }
+    return fibOdds;
+}
+
+sumFibs(4);
