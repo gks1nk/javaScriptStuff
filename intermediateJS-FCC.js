@@ -218,3 +218,38 @@ function sumFibs(num) {
 }
 
 sumFibs(4);
+
+//sum all primes
+function sumPrimes(num) {
+  var primesArray = [];
+  var upperLimit = Math.sqrt(num);
+  var primesOutput = [];
+  //My attempt at the Sieve of Eratosthenes
+  //I am not a math wizard lol
+  for (var i = 0; i <= num; i++) {
+    primesArray.push(true);
+  }
+
+  for (var j = 2; j <= upperLimit; j++) {
+    if (primesArray[j]) {
+      for (var k = j * j; k < num; k += j) {
+        primesArray[k] = false;
+      }
+    }
+  }
+  
+  for (var l = 2; l <= num; l++) {
+    if (primesArray[l]) {
+      primesOutput.push(l);
+    }
+  }
+  if (num % 2 == 0) {
+    primesOutput.pop();
+  }
+  console.log(primesOutput)
+  return primesOutput.reduce(function(a, b) {return a + b}, 0);
+}
+
+console.log(sumPrimes(100));
+
+//
