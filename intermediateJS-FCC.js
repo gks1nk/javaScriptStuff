@@ -252,4 +252,29 @@ function sumPrimes(num) {
 
 console.log(sumPrimes(100));
 
-//
+//Smallest Common Multiple of a range of numbers
+//Using Euclidean Algorithm
+function smallestCommons(arr) {
+  var workArr = [];
+  for (var x = Math.min(arr[0], arr[1]); x <= Math.max(arr[0], arr[1]); x++) {
+    workArr.push(x);
+  }
+  //Euclidean Algorithm maybe... Math isn't my thing
+  function gcd(a, b) {
+      return !b ? a : gcd(b, a % b);
+  }
+  
+  function lcm(a, b) {
+      return (a * b) / gcd(a, b);   
+  }
+
+  var smallestCommon = workArr[0];
+  workArr.forEach(function(n) {
+    smallestCommon = lcm(smallestCommon, n);
+    console.log(smallestCommon)
+  });
+
+  return smallestCommon;
+}
+
+console.log(smallestCommons([23,18]));
