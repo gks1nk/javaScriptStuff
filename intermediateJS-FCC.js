@@ -278,3 +278,17 @@ function smallestCommons(arr) {
 }
 
 console.log(smallestCommons([23,18]));
+
+//Finders Keepers
+function findElement(arr, func) {
+  var num;
+  for (var x = 0; x < arr.length; x++) {
+    if (func(arr[x])) {
+      num = arr[x];
+      break;
+    }
+  }
+  return num;
+}
+
+console.log(findElement([1, 3, 5, 8, 9, 10], function(num) { return num % 2 === 0; }));
