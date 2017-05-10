@@ -323,3 +323,28 @@ function steamrollArray(arr) {
 }
 
 console.log(steamrollArray([1, {}, [3, [[4]]]]));
+
+//Binary Agents
+function binaryAgent(str) {
+  var binaryArr = str.split(" ");
+  var convertedStr = "";
+  
+  function binaryToDecimal(string) {
+    var decimalVal = 0;
+    var powerOfTwo = 128;
+    for (var x = 0; x < string.length; x++) {
+      if (string[x] == "1") {
+        decimalVal += powerOfTwo;
+      }
+      powerOfTwo /= 2;
+    }
+    return decimalVal;  
+  }
+  
+  for (var y = 0; y < binaryArr.length; y++) {
+    convertedStr += String.fromCharCode(binaryToDecimal(binaryArr[y]));
+  }
+  return convertedStr;
+}
+
+console.log(binaryAgent("01001001 00100000 01101100 01101111 01110110 01100101 00100000 01000110 01110010 01100101 01100101 01000011 01101111 01100100 01100101 01000011 01100001 01101101 01110000 00100001"));
