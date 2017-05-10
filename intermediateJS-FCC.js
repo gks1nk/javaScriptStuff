@@ -307,3 +307,19 @@ function dropElements(arr, func) {
 }
 
 console.log(dropElements([1, 2, 3], function(n) {return n < 3; }));
+
+//steamroller (flatten a nested array)
+function steamrollArray(arr) {
+  // I'm a steamroller, baby
+  var flatArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      flatArr = flatArr.concat(steamrollArray(arr[i]));
+    } else {
+      flatArr.push(arr[i]);
+    }
+  }
+  return flatArr;
+}
+
+console.log(steamrollArray([1, {}, [3, [[4]]]]));
