@@ -292,3 +292,18 @@ function findElement(arr, func) {
 }
 
 console.log(findElement([1, 3, 5, 8, 9, 10], function(num) { return num % 2 === 0; }));
+
+//Drop It
+function dropElements(arr, func) {
+  // Drop them elements.
+  var droppedArr = [];
+  for (var x = 0; x < arr.length; x++) {
+    if (func(arr[x])) {
+      droppedArr = arr.slice(x);
+      break;
+    }
+  }
+  return droppedArr;
+}
+
+console.log(dropElements([1, 2, 3], function(n) {return n < 3; }));
