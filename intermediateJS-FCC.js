@@ -348,3 +348,26 @@ function binaryAgent(str) {
 }
 
 console.log(binaryAgent("01001001 00100000 01101100 01101111 01110110 01100101 00100000 01000110 01110010 01100101 01100101 01000011 01101111 01100100 01100101 01000011 01100001 01101101 01110000 00100001"));
+
+//Everything Be True
+function truthCheck(collection, pre) {
+  // Is everyone being true?
+  var result = true;
+  for (var x = 0; x < collection.length; x++) {
+    if (collection[x].hasOwnProperty(pre)) {
+      if (collection[x][pre] <= 0 || collection[x][pre] === "" || collection[x][pre] === undefined) {
+        result = false;
+        break;
+      } else if (collection[x][pre] === NaN || typeof collection[x][pre] === "number") {
+          result = false;
+          break;
+        }
+    } else {
+      result = false;
+      break;
+    }
+  }
+  return result;
+}
+
+console.log(truthCheck([{"single": "double"}, {"single": NaN}], "single"));
