@@ -371,3 +371,30 @@ function truthCheck(collection, pre) {
 }
 
 console.log(truthCheck([{"single": "double"}, {"single": NaN}], "single"));
+
+//Arguments Optional
+function addTogether() {
+  if (arguments[1] !== undefined) {
+    if (typeof arguments[0] == "number" && typeof arguments[1] == "number") {
+      return arguments[0] + arguments[1];
+    } else {
+      return undefined;
+    }
+  } else {
+    var c = arguments[0];
+    if (typeof c == "number") {
+      return function oneArgument(d) {
+        if (typeof d == "number") {
+          return c + d;
+        } else {
+          return undefined;
+        }
+      }
+    } else {
+      return undefined;
+    }
+  }
+}
+//var testy = addTogether(2);
+//console.log(testy(8));
+console.log(addTogether(2,[3]));
