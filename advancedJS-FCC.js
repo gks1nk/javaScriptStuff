@@ -31,4 +31,27 @@ function telephoneCheck(str) {
 
 telephoneCheck("555-555-5555");
 
-//
+//symmetric difference
+function sym(args) {
+  var theArguments = [].slice.call(arguments);
+  function symDif (array1, array2) {
+    var difsArray1 = array1.filter(function(x) {
+      if (array2.indexOf(x) == -1) {
+        return x;
+      }
+    });
+    var difsArray2 = array2.filter(function(y) {
+      if (array1.indexOf(y) == -1) {
+        return y;
+      }
+    });
+    return difsArray1.concat(difsArray2);
+  }
+  var symDifArguments = theArguments.reduce(symDif);
+  var uniqueSymDifs = symDifArguments.filter(function(item, pos) {
+    return symDifArguments.indexOf(item) == pos;
+  });
+  return uniqueSymDifs;
+}
+
+console.log(sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]));
