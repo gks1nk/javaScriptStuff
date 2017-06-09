@@ -55,3 +55,77 @@ function sym(args) {
 }
 
 console.log(sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]));
+
+
+//EXACT CHANGE
+function checkCashRegister(price, cash, cid) {
+  //function to calculate change needed
+  function calcChangeAmount(price, cash) {
+    var change = cash - price;
+    return parseFloat(change.toFixed(2));
+  }
+
+  //function to total amount cash in drawer
+  //had to modify to check that the proper bills/coins were available to make change
+  function calcCashInDrawer(cid) {
+    var cashTotal = 0;
+    cid.forEach(function (element) {cashTotal += element[1];});
+    return parseFloat(cashTotal.toFixed(2));
+  }
+  
+  //function to calculate change based on what is in drawer and amount needed
+  //had to modify to take amount of bills/coins into consideration for change
+  function calcChangeNeeded(cid, change) {
+    var changeInCash = [];
+    var cashValues = [0.01, 0.05, 0.10, 0.25, 1.00, 5.00, 10.00, 20.00, 100.00];
+    for (var x = cashValues.length - 1; x >= 0; x--) {
+      var typeOfCash = [];
+      var typeOfCashAmount = cid[x][1];
+      while (change >= cashValues[x] && typeOfCashAmount >= cashValues[x]) {
+        if (typeOfCash.length === 0) {
+          typeOfCash.push(cid[x][0]);
+          typeOfCash.push(0);
+        }
+        typeOfCashAmount -= cashValues[x];
+        typeOfCashAmount = parseFloat(typeOfCashAmount.toFixed(2));
+        change -= cashValues[x];
+        change = parseFloat(change.toFixed(2));
+        typeOfCash[1] += cashValues[x];
+        typeOfCash[1] = parseFloat(typeOfCash[1].toFixed(2));
+      }
+      if (typeOfCash.length > 0) {
+        changeInCash.push(typeOfCash);
+      }
+    }
+    return changeInCash;
+  }
+  
+  var changeAmount = calcChangeAmount(price, cash);
+  var cashInDrawer = calcCashInDrawer(cid);
+  var changeNeeded = calcChangeNeeded(cid, changeAmount);
+  if (changeAmount > cashInDrawer) {
+    return "Insufficient Funds";
+  } else if (changeAmount > calcCashInDrawer(changeNeeded)) {
+    return "Insufficient Funds";
+  } else if (changeAmount == cashInDrawer) {
+    return "Closed";
+  } else {
+    return changeNeeded;
+  }
+}
+
+// Example cash-in-drawer array:
+// [["PENNY", 1.01],
+// ["NICKEL", 2.05],
+// ["DIME", 3.10],
+// ["QUARTER", 4.25],
+// ["ONE", 90.00],
+// ["FIVE", 55.00],
+// ["TEN", 20.00],
+// ["TWENTY", 60.00],
+// ["ONE HUNDRED", 100.00]]
+
+console.log(checkCashRegister(3.26, 100.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]));
+//END OF EXACT CHANGE
+
+
