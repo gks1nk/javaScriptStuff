@@ -128,4 +128,75 @@ function checkCashRegister(price, cash, cid) {
 console.log(checkCashRegister(3.26, 100.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]));
 //END OF EXACT CHANGE
 
+//Inventory Update
+function scanInventory(item, curInv) {
+  for (j = 0; j < curInv.length; j++) {
+    if (item === curInv[j][1]) 
+      return true;
+  }
+  return false;
+}
+
+function updateItem(itemArr, curInv) {
+  for (k = 0; k < curInv.length; k++) {
+    if (itemArr[1] === curInv[k][1])
+      curInv[k][0] += itemArr[0];
+  }
+  return curInv;
+}
+
+function insertNewItem(itemArr, curInv) {
+  var insertIndex = 0;
+  for (l = 0; l < curInv.length; l++) {
+    if (itemArr[1].localeCompare(curInv[l][1]) == -1) {
+      insertIndex = l;
+      break;
+    }
+    insertIndex = l + 1;
+  }
+  curInv.splice(insertIndex, 0, itemArr);
+  return curInv;
+}
+
+function updateInventory(arr1, arr2) {
+  /* Stuff I think I need
+  -function to scan inventory for items
+  -function to update existing item total
+  -function to add new item to the inventory
+  -Function to alphabetically sort the inventory by item name
+  */
+    // All inventory must be accounted for or you're fired!
+  var newInv = arr1;
+  for (i = 0; i < arr2.length; i++) {
+    if (scanInventory(arr2[i][1], arr1)) {
+      newInv = updateItem(arr2[i], arr1);
+    } else {
+      console.log("Didn't Find " + arr2[i][1]);
+      newInv = insertNewItem(arr2[i], arr1);
+    }
+  }
+    return newInv;
+}
+
+// Example inventory lists
+var curInv = [
+    [21, "Bowling Ball"],
+    [2, "Dirty Sock"],
+    [1, "Hair Pin"],
+    [5, "Microphone"]
+];
+
+var newInv = [
+    [2, "Hair Pin"],
+    [3, "Half-Eaten Apple"],
+    [67, "Bowling Ball"],
+    [7, "Toothpaste"]
+];
+//var itemArr = [67, "Bowling Ball"]
+console.log(updateInventory([], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]]));
+//console.log(scanInventory("Butter", curInv));
+//console.log(updateItem(itemArr, curInv));
+//console.log(insertNewItem(itemArr, curInv));
+
+
 
