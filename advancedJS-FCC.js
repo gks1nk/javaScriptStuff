@@ -202,6 +202,7 @@ console.log(updateInventory([], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, 
 //NO REPEATS PLEASE
 //Utilizing Heap's Algorithm
 
+function permAlone(str) {
   //Using Heap's Algorithm
   function permute(str) {
     var permutedArr = [];
