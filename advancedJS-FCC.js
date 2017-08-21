@@ -199,4 +199,41 @@ console.log(updateInventory([], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, 
 //console.log(insertNewItem(itemArr, curInv));
 
 
+//NO REPEATS PLEASE
+//Utilizing Heap's Algorithm
+
+  //Using Heap's Algorithm
+  function permute(str) {
+    var permutedArr = [];
+    var list = str.split('');
+  
+	  function swap(n,m) {
+		  tmp = list[n]
+		  list[n] = list[m]
+		  list[m] = tmp
+	  }
+
+	  function generate(n) {
+		  if (n==1) permutedArr.push(list.join(''))
+		  else {
+			  for (var i=0; i<n; i++) {
+				  generate(n-1)
+				  swap(n%2 ? 0 : i, n-1)
+			  }
+		  }
+	  }
+	  generate(list.length);
+    return permutedArr;
+  }
+  
+  var resultsArr = permute(str);
+  var regex = /([A-Za-z])\1/;
+  var total = resultsArr.reduce(function(sum, value) {
+    if (!regex.test(value)) sum++;
+    return sum;
+  }, 0)
+  return total;
+}
+
+console.log(permAlone('aac'));
 
