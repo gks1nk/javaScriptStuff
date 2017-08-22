@@ -238,3 +238,60 @@ function permAlone(str) {
 
 console.log(permAlone('aac'));
 
+//MAKE A PERSON
+var Person = function(firstAndLast) {
+  //stuff I need to implement:
+  //getFirstName()
+  //getLastName()
+  //getFullName()
+  //setFirstName(first)
+  //setLastName(last)
+  //setFullName(firstAndLast)
+  
+  // Complete the method below and implement the others similarly
+  var firstName = ""
+  var lastName = ""
+  
+  function splitFullName(fullName) {
+    var splitName = fullName.split(" ");
+    firstName = splitName[0];
+    lastName = splitName[1];
+  }
+  splitFullName(firstAndLast);
+ 
+  
+  
+  this.getFullName = function() {
+    return firstName + " " + lastName;
+  };
+  
+  this.getFirstName = function() {
+    return firstName;
+  };
+  
+  this.getLastName = function() {
+    return lastName;
+  };
+  
+  this.setFullName = function(newFullName) {
+    splitFullName(newFullName);
+  };
+  
+  this.setFirstName = function(newFirstName) {
+    firstName = newFirstName;
+  };
+  
+  this.setLastName = function(newLastName) {
+    lastName = newLastName;
+  };
+  
+};
+
+var bob = new Person('Bob Ross');
+console.log(bob.getFullName());
+console.log(bob.getFirstName());
+console.log(bob.getLastName());
+bob.setFullName("Hulk Hogan")
+console.log(bob.getFullName());
+bob.setFirstName("Helen");
+console.log(bob.getFullName());
