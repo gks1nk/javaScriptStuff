@@ -295,3 +295,34 @@ bob.setFullName("Hulk Hogan")
 console.log(bob.getFullName());
 bob.setFirstName("Helen");
 console.log(bob.getFullName());
+
+//MAP THE DEBRIS
+function orbitalPeriod(arr) {
+  //T = 2 * pi * sqr(a^3 / GM)
+  //a = earthRadius + avgAlt
+  //Math.PI
+  //Math.pow(3, 2) = 9
+  
+  var GM = 398600.4418;
+  var earthRadius = 6367.4447;
+  var newArr = [];
+  
+  function calcOrbitalPeriod(avgAlt) {
+    var twoPI = 2 * Math.PI;
+    var aToThird = Math.pow((earthRadius + avgAlt), 3);
+    return Math.round(twoPI * Math.sqrt(aToThird / GM));
+  }
+  
+  var buildOrbitalPeriodObj = function(object) {
+    var newObject = {};
+    newObject.name = object.name;
+    newObject.orbitalPeriod = calcOrbitalPeriod(object.avgAlt);
+    return newObject;
+  };
+  
+  newArr = arr.map(buildOrbitalPeriodObj);
+  
+  return newArr;
+}
+
+console.log(orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]));
